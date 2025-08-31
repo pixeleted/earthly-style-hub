@@ -59,34 +59,34 @@ export default function FooterNewsletter() {
   };
 
   const footerLinks = {
-    Explore: [
-      { label: "Articles", href: "/articles" },
-      { label: "Reviews", href: "/reviews" },
-      { label: "Guides", href: "/guides" },
-      { label: "Trends", href: "/trends" }
+    Technology: [
+      { label: "AI & Machine Learning", href: "/tech/ai" },
+      { label: "Smart Devices", href: "/tech/devices" },
+      { label: "Software Reviews", href: "/tech/software" },
+      { label: "Future Tech", href: "/tech/future" }
     ],
-    Shop: [
-      { label: "Featured", href: "/shop/featured" },
-      { label: "New Arrivals", href: "/shop/new" },
-      { label: "Categories", href: "/shop/categories" },
-      { label: "Gift Cards", href: "/shop/gift-cards" }
+    Lifestyle: [
+      { label: "Digital Wellness", href: "/lifestyle/wellness" },
+      { label: "Productivity", href: "/lifestyle/productivity" },
+      { label: "Work from Home", href: "/lifestyle/remote" },
+      { label: "Tech Habits", href: "/lifestyle/habits" }
     ],
-    Support: [
-      { label: "Help Center", href: "/help" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Shipping", href: "/shipping" },
-      { label: "Returns", href: "/returns" }
+    Resources: [
+      { label: "Guides & Tutorials", href: "/guides" },
+      { label: "Tool Reviews", href: "/reviews" },
+      { label: "Buying Guide", href: "/buying-guide" },
+      { label: "Newsletter Archive", href: "/archive" }
     ],
-    Legal: [
+    Company: [
+      { label: "About Us", href: "/about" },
+      { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Cookie Policy", href: "/cookies" },
-      { label: "Accessibility", href: "/accessibility" }
+      { label: "Terms of Service", href: "/terms" }
     ]
   };
 
   return (
-    <footer className="bg-muted/30 border-t border-border/50 mt-24 pt-16 pb-8">
+    <footer className="bg-secondary/30 border-t border-border/50 mt-24 pt-16 pb-8">
       <div className="container max-w-7xl mx-auto px-4">
         {/* Newsletter and Navigation */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-12">
@@ -94,13 +94,13 @@ export default function FooterNewsletter() {
           <div className="lg:col-span-5">
             <div className="bg-card rounded-lg p-8 shadow-sm border border-border/50">
               <div className="flex items-center gap-2 mb-3">
-                <MailPlus className="h-5 w-5 text-primary" />
+                <MailPlus className="h-5 w-5 text-accent" />
                 <h3 className="font-heading text-xl font-semibold text-foreground">
-                  Stay Updated
+                  Stay Connected
                 </h3>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Get the latest articles, insights, and curated recommendations delivered to your inbox.
+                Get the latest tech insights, lifestyle tips, and product reviews delivered straight to your inbox.
               </p>
               
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -121,10 +121,10 @@ export default function FooterNewsletter() {
                           setErrorMessage("");
                         }
                       }}
-                      className={`transition-all duration-120 ${
+                      className={`transition-all duration-120 bg-background border-border ${
                         submissionState === "error" 
                           ? "border-destructive focus:ring-destructive" 
-                          : "focus:ring-ring"
+                          : "focus:ring-accent"
                       }`}
                       disabled={submissionState === "validating"}
                       aria-describedby={errorMessage ? "email-error" : undefined}
@@ -134,7 +134,7 @@ export default function FooterNewsletter() {
                   <Button
                     type="submit"
                     disabled={submissionState === "validating"}
-                    className="transition-all duration-120 hover:translate-y-[-1px] hover:shadow-md disabled:translate-y-0 disabled:shadow-none sm:px-8"
+                    className="bg-accent hover:bg-accent/90 text-accent-foreground transition-all duration-120 hover:translate-y-[-1px] hover:shadow-md disabled:translate-y-0 disabled:shadow-none sm:px-8"
                   >
                     {submissionState === "validating" ? "Subscribing..." : "Subscribe"}
                   </Button>
@@ -167,7 +167,7 @@ export default function FooterNewsletter() {
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          className="text-muted-foreground hover:text-foreground transition-colors duration-120 text-sm"
+                          className="text-muted-foreground hover:text-accent transition-colors duration-120 text-sm"
                         >
                           {link.label}
                         </a>
@@ -183,9 +183,19 @@ export default function FooterNewsletter() {
         {/* Social Icons and Copyright */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-border/50 gap-4">
           <div className="flex items-center gap-4">
+            {/* Brand */}
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-accent rounded flex items-center justify-center">
+                <span className="text-accent-foreground font-bold text-xs">T</span>
+              </div>
+              <span className="font-heading font-medium text-foreground">
+                TechLife
+              </span>
+            </div>
+            
             <a
               href="/rss"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-120"
+              className="text-muted-foreground hover:text-accent transition-colors duration-120"
               aria-label="RSS Feed"
             >
               <Rss className="h-5 w-5" />
@@ -193,7 +203,7 @@ export default function FooterNewsletter() {
           </div>
           
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} Editorial. All rights reserved.
+            © {new Date().getFullYear()} TechLife. All rights reserved.
           </p>
         </div>
       </div>
